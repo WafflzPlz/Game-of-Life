@@ -2,8 +2,12 @@ import pygame
 
 HEIGHT = WIDTH = 500
 CELL_SIZE = 25
+GRID_HEIGHT = GRID_WIDTH = HEIGHT // CELL_SIZE
+
+
 WHITE = (255,255,255)
 BLACK = (0,0,0)
+GREY = (128,128,128)
 
 clock = pygame.time.Clock()
 FPS = 5
