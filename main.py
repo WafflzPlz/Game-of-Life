@@ -12,6 +12,8 @@ GREY = (128,128,128)
 clock = pygame.time.Clock()
 FPS = 5
 
+map = [[0 for x in range(GRID_WIDTH)] for y in range(GRID_HEIGHT)]
+
 
 if __name__ == '__main__':
     pygame.init()
