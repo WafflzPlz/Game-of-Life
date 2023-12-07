@@ -11,14 +11,14 @@ SCREEN = pygame.display.set_mode((HEIGHT, WIDTH))
 pygame.display.set_caption("Conway's game of life")
 
 map = Map(SCREEN)
-eventmanager = EventManager(SCREEN, map.grid)
+eventmanager = EventManager(SCREEN, map)
 
 run = True
 def main():
 
     while True:
         clock.tick(FPS)
-        SCREEN.fill(GREY)
+        SCREEN.fill(BLACK)
 
         eventmanager.update()
 
