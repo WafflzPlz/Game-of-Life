@@ -2,16 +2,28 @@ import pygame
 from constants import *
 class Map:
     def __init__(self, SCREEN):
-        self.grid = [[1 for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
+        self.grid = [[0 for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
         self.SCREEN = SCREEN
+        self.grid_lines = True
 
-    def change_value(self, x, y):
-        self.grid[y][x] = 0 if self.grid[y][x] == 1 else 0
+    def swap_value(self, x, y):
+        self.grid[x][y] = 0 if self.grid[x][y] == 1 else 1
+
+    def toggle_grid_lines(self):
+        self.grid_lines = not self.grid_lines
+
     def update(self):
         for row in self.grid:
             for col in row:
                 print("hello")
                 # TODO:implement logic
+
+    def draw_grid_lines(self):
+        for row in range(HEIGHT):
+            pygame.draw.line(self.SCREEN, GREY, (0, row * CELL_SIZE), (WIDTH, row * CELL_SIZE))
+
+        for col in range(WIDTH):
+            pygame.draw.line(self.SCREEN, GREY, (col * CELL_SIZE, 0), (col * CELL_SIZE, HEIGHT))
 
     def draw(self):
         for row in range(len(self.grid)):
@@ -20,3 +32,5 @@ class Map:
                     pygame.draw.rect(self.SCREEN, WHITE, pygame.Rect(row * CELL_SIZE, col * CELL_SIZE, CELL_SIZE, CELL_SIZE))
                 else:
                     pygame.draw.rect(self.SCREEN, BLACK, pygame.Rect(row * CELL_SIZE, col * CELL_SIZE, CELL_SIZE, CELL_SIZE))
+
+        if self.grid_lines: self.draw_grid_lines()
