@@ -1,5 +1,7 @@
 import pygame
-import map
+from map import Map
+from eventmanager import EventManager
+
 from constants import *
 
 clock = pygame.time.Clock()
@@ -9,7 +11,8 @@ if __name__ == '__main__':
     SCREEN = pygame.display.set_mode((HEIGHT, WIDTH))
     pygame.display.set_caption("Conway's game of life")
 
-    map = map.Map(SCREEN)
+    map = Map(SCREEN)
+    eventmanager = EventManager(SCREEN)
 
     clock.tick(FPS)
     run = True
