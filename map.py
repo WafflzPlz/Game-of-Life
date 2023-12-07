@@ -22,8 +22,14 @@ class Map:
         for row in range(HEIGHT):
             pygame.draw.line(self.SCREEN, GREY, (0, row * CELL_SIZE), (WIDTH, row * CELL_SIZE))
 
+        #draw last row line
+        pygame.draw.line(self.SCREEN, GREY, (0, HEIGHT - 1), (WIDTH, HEIGHT - 1))
+
         for col in range(WIDTH):
             pygame.draw.line(self.SCREEN, GREY, (col * CELL_SIZE, 0), (col * CELL_SIZE, HEIGHT))
+
+        #draw last col line
+        pygame.draw.line(self.SCREEN, GREY, (WIDTH - 1, 0), (WIDTH - 1, HEIGHT))
 
     def draw(self):
         for row in range(len(self.grid)):
