@@ -5,6 +5,8 @@ class Map:
         self.grid = [[1 for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
         self.SCREEN = SCREEN
 
+    def change_value(self, x, y):
+        self.grid[y][x] = 0 if self.grid[y][x] == 1 else 0
     def update(self):
         for row in self.grid:
             for col in row:
