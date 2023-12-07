@@ -14,9 +14,15 @@ if __name__ == '__main__':
     clock.tick(FPS)
     run = True
     while run:
+        SCREEN.fill(GREY)
         map.draw()
 
         for event in pygame.event.get():
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    run = False
+
             if event.type == pygame.QUIT:
                 run = False
 
