@@ -6,17 +6,17 @@ from constants import *
 
 clock = pygame.time.Clock()
 
-if __name__ == '__main__':
-    pygame.init()
-    SCREEN = pygame.display.set_mode((HEIGHT, WIDTH))
-    pygame.display.set_caption("Conway's game of life")
+pygame.init()
+SCREEN = pygame.display.set_mode((HEIGHT, WIDTH))
+pygame.display.set_caption("Conway's game of life")
 
-    map = Map(SCREEN)
-    eventmanager = EventManager(SCREEN)
+map = Map(SCREEN)
+eventmanager = EventManager(SCREEN)
 
-    clock.tick(FPS)
+def main():
     run = True
     while run:
+        clock.tick(FPS)
         SCREEN.fill(GREY)
         map.draw()
 
@@ -31,3 +31,7 @@ if __name__ == '__main__':
 
         pygame.display.update()
 
+
+
+if __name__ == '__main__':
+    main()
