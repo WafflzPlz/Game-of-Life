@@ -7,7 +7,7 @@ class Map:
         self.grid_lines = True
 
     def swap_value(self, x, y):
-        self.grid[x][y] = 0 if self.grid[x][y] == 1 else 1
+        self.grid[x][y] = not self.grid[x][y]
 
     def toggle_grid_lines(self):
         self.grid_lines = not self.grid_lines
