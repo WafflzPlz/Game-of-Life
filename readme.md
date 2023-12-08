@@ -1,0 +1,1 @@
+This is a simulation of conway's game of life using pygame for visualization.
