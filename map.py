@@ -1,3 +1,5 @@
+import copy
+
 import pygame
 from constants import *
 class Map:
@@ -15,9 +17,13 @@ class Map:
     def valid_position(self, x, y):
         return 0 <= x < GRID_WIDTH and 0 <= y < GRID_HEIGHT
 
+    def reset(self):
+        self.grid = [[0 for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
+
     def update(self):
-        for row in range(GRID_HEIGHT):
-            for col in range(GRID_WIDTH):
+        next_grid = copy.deepcopy(self.grid)
+        for row in range(len(self.grid)):
+            for col in range(len(self.grid[row])):
                 live_neighbours = []
                 dead_neighbours = []
                 for y in range(-1,2):
@@ -27,18 +33,17 @@ class Map:
 
                             live_neighbours.append((col+x,row+y)) if self.grid[row+y][col+x] == 1 else dead_neighbours.append((col+x,row+y))
 
-                print(live_neighbours)
-                print(dead_neighbours)
                 if self.grid[row][col] == 0:
-                    return
-                    #TODO: implement
+                    if len(live_neighbours) == 3:
+                        next_grid[row][col] = 1
 
                 else:
-                    #TODO: implement
-                    return
+                    if len(live_neighbours) < 2:
+                        next_grid[row][col] = 0
+                    elif len(live_neighbours) > 3:
+                        next_grid[row][col] = 0
 
-
-
+        self.grid = next_grid
 
     def draw_grid_lines(self):
         for row in range(HEIGHT):
