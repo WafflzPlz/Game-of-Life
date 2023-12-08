@@ -12,11 +12,33 @@ class Map:
     def toggle_grid_lines(self):
         self.grid_lines = not self.grid_lines
 
+    def valid_position(self, x, y):
+        return 0 <= x < GRID_WIDTH and 0 <= y < GRID_HEIGHT
+
     def update(self):
-        for row in self.grid:
-            for col in row:
-                print("hello")
-                # TODO:implement logic
+        for row in range(GRID_HEIGHT):
+            for col in range(GRID_WIDTH):
+                live_neighbours = []
+                dead_neighbours = []
+                for y in range(-1,2):
+                    for x in range(-1,2):
+                        if self.valid_position(col+x, row+y):
+                            if x == 0 and y == 0: continue
+
+                            live_neighbours.append((col+x,row+y)) if self.grid[row+y][col+x] == 1 else dead_neighbours.append((col+x,row+y))
+
+                print(live_neighbours)
+                print(dead_neighbours)
+                if self.grid[row][col] == 0:
+                    return
+                    #TODO: implement
+
+                else:
+                    #TODO: implement
+                    return
+
+
+
 
     def draw_grid_lines(self):
         for row in range(HEIGHT):

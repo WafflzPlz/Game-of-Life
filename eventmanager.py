@@ -39,3 +39,5 @@ class EventManager:
             #close game
             if event.type == pygame.QUIT:
                 self.close()
+
+        self.map.update()
